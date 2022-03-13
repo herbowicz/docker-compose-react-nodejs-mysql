@@ -7,6 +7,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx:/usr/share/nginx/html
+    networks:
+      - frontend  
 
   mysqldb:
     image: mysql:5.7
