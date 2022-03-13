@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/usr/share/nginx/html
+
   mysqldb:
     image: mysql:5.7
     restart: unless-stopped
@@ -14,7 +21,7 @@ services:
       - db:/var/lib/mysql
     networks:
       - backend
-  
+
   bezkoder-api:
     depends_on:
       - mysqldb
